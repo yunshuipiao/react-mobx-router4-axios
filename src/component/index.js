@@ -1,17 +1,26 @@
-
 import React from 'react'
 import './index.less'
 import {Button} from 'antd'
+import {observer} from 'mobx-react'
+import demoStore from '../mobx/index'
 
 
-const Home = () => {
-    return(
+const Home = observer( () => {
+    return (
         <div className='Home'>
-            <Button type="primary">Button</Button>
-            <div>react demo</div>
-            <div>react demo</div>
+            <div>{demoStore.startNum}</div>
+            <div>{demoStore.startNum}</div>
+            <div className="buttons">
+                <Button type="primary" className="btn" onClick={() => {
+                    demoStore.inc()
+                }}>inc</Button>
+                <Button type="primary" className="btn" onClick={() => {
+                    demoStore.dec()
+                }}>dec</Button>
+                <Button type="primary" className="btn" onClick={() => demoStore.reset()}>reset</Button>
+            </div>
         </div>
     );
-}
+} )
 
 export default Home
