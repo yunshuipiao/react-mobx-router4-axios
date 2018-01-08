@@ -1,18 +1,13 @@
 
 import {observable, action} from 'mobx'
+import CountStore from './CountStore'
+import ChangeNameStore from './ChangeNameStore'
 
-class DemoStore {
-
-    @observable startNum = 10
-
-    @action
-    inc() { this.startNum += 1 }
-
-    @action
-    dec() { this.startNum -= 1}
-
-    @action
-    reset() { this.startNum = 0 }
-}
-
-export default new DemoStore()
+// class Store {
+//     constructor() {
+//         this.count = new CountStore()
+//         this.changeName = new ChangeNameStore()
+//     }
+// }
+//
+// export default new Store()
