@@ -63,12 +63,31 @@ class Hello extends React.Component {
     }
 }
 
+const Coroutine = () => {
+    return (
+        <div className="Coroutine">
+            <Button type="primary" onClick={click_button}>CoroutineTest</Button>
+        </div>
+    );
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const click_button = async() => {
+    console.log('Taking a break...');
+    await sleep(2000);
+    console.log('Two second later');
+}
+
 const Home = observer(() => {
     return (
         <div className='Home'>
             <Count/>
             <ChangeName/>
             <Hello name="wen"/>
+            <Coroutine />
         </div>
     );
 })
