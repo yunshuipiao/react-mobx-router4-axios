@@ -4,6 +4,7 @@ import {observer} from 'mobx-react'
 import Count from './Count/index'
 import ChangeName from './Change/index'
 import {Button} from 'antd'
+import agent from '../httpSer/agent'
 
 class Hello extends React.Component {
     constructor(props) {
@@ -71,15 +72,12 @@ const Coroutine = () => {
     );
 }
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+const click_button = () => {
+    agent.Movies.all().then()
+        .catch()
+        .finally()
 }
 
-const click_button = async() => {
-    console.log('Taking a break...');
-    await sleep(2000);
-    console.log('Two second later');
-}
 
 const Home = observer(() => {
     return (
