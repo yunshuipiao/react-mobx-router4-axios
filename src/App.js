@@ -16,7 +16,9 @@ class App extends Component {
     render() {
         return (
             <Provider {...stores}>
-                <Home/>
+                <div className="App">
+                    <Home/>
+                </div>
             </Provider>
         );
     }
