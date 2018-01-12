@@ -15,4 +15,4 @@ class CountStore {
     reset() { this.startNum = 0 }
 }
 
-export default  CountStore;
+export default  new CountStore();

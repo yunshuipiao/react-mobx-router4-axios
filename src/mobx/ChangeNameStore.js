@@ -15,4 +15,4 @@ class ChangeNameStore {
     }
 }
 
-export default ChangeNameStore;
+export default new ChangeNameStore();
