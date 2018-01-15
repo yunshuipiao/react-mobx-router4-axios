@@ -73,9 +73,9 @@ const Coroutine = () => {
 }
 
 const click_button = () => {
-    agent.Movies.all().then()
+    agent.Movies.all().then(res => {console.log("----------------")})
         .catch()
-        .finally()
+        .finally(console.log("finally always invoked"))
 }
 
 

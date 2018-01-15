@@ -10,6 +10,7 @@ let instance = axios.create({
 instance.interceptors.request.use( (config) => {
     //add auth
     //add header
+    console.log("add headers and auth")
     return config;
 },  (error) => {
 
@@ -19,6 +20,7 @@ instance.interceptors.request.use( (config) => {
 // Add a response interceptor
 instance.interceptors.response.use( (response) => {
     // 返回错误判断
+    console.log("filter error code")
     return response;
 },  (error) => {
     // 可以在后面的请求中catch
@@ -32,6 +34,11 @@ const requests = {
                 console.log(res)
                 return res.data
             })
+            // also catch in this。but not recommend
+            .catch()
+    // post:
+    // put:
+    // delete:
 }
 
 const Movies = {
