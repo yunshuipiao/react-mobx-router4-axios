@@ -73,8 +73,13 @@ const Coroutine = () => {
 }
 
 const click_button = () => {
-    agent.Movies.all().then(res => {console.log("----------------")})
-        .catch()
+    agent.Movies.all()
+        .then(res => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
         .finally(console.log("finally always invoked"))
 }
 
@@ -85,7 +90,7 @@ const Home = observer(() => {
             <Count/>
             <ChangeName/>
             <Hello name="wen"/>
-            <Coroutine />
+            <Coroutine/>
         </div>
     );
 })

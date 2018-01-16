@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 let instance = axios.create({
-    baseURL: "https://movi.douban.com/j/",
+    baseURL: "https://movie.douban.com/j/",
     timeout: 2500
 })
 
