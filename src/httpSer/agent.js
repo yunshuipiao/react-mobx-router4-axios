@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 let instance = axios.create({
-    baseURL: "https://movie.douban.com/j/",
+    baseURL: "http://www.swensun.com/api/v1/",
     timeout: 2500
 })
 
@@ -24,6 +24,7 @@ instance.interceptors.response.use( (response) => {
     return response;
 },  (error) => {
     // 可以在后面的请求中catch
+    console.log("interceptors response error")
     return Promise.reject(error);
 });
 
@@ -31,6 +32,7 @@ const requests = {
     get: url =>
         instance.get(url)
             .then(res => {
+                console.log("request get ++++++++++ ")
                 return res.data
             })
             // also catch in this。but not recommend. after catch and then also invoked.
@@ -42,9 +44,9 @@ const requests = {
             //         console.log("error=")
             //         // The request was made and the server responded with a status code
             //         // that falls out of the range of 2xx
-            //         // console.log(error.response.data);
-            //         // console.log(error.response.status);
-            //         // console.log(error.response.headers);
+            //         console.log(error.response.data);
+            //         console.log(error.response.status);
+            //         console.log(error.response.headers);
             //     } else if (error.request) {
             //         console.log("error==")
             //         // The request was made but no response was received
@@ -63,7 +65,7 @@ const requests = {
 }
 
 const Movies = {
-    all: () => requests.get('/new_search_subjects?tags=%E4%B8%AD%E5%9B%BD&start=0')
+    all: () => requests.get('/zhihu/mage')
 }
 
 export default {
