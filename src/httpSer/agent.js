@@ -32,7 +32,6 @@ const requests = {
     get: url =>
         instance.get(url)
             .then(res => {
-                console.log("request get ++++++++++ ")
                 return res.data
             })
             // also catch in this。but not recommend. after catch and then also invoked.
@@ -65,7 +64,7 @@ const requests = {
 }
 
 const Movies = {
-    all: () => requests.get('/zhihu/mage')
+    all: () => requests.get('/zhihu/image')
 }
 
 export default {

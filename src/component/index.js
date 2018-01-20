@@ -3,8 +3,10 @@ import './index.less'
 import {observer} from 'mobx-react'
 import Count from './Count/index'
 import ChangeName from './Change/index'
+import Main from './antd-main/index'
 import {Button} from 'antd'
 import agent from '../httpSer/agent'
+import {Switch, Route, Redirect} from 'react-router-dom'
 
 class Hello extends React.Component {
     constructor(props) {
@@ -84,16 +86,52 @@ const click_button = () => {
 }
 
 
-const Home = observer(() => {
-    return (
-        <div className='Home'>
-            <Count/>
-            <ChangeName/>
-            <Hello name="wen"/>
-            <Coroutine/>
-        </div>
+// const Home = observer(() => {
+//     return (
+//         <div className='Home'>
+//             <Count/>
+//             <ChangeName/>
+//             <Hello name="wen"/>
+//             <Coroutine/>
+//         </div>
+//     );
+// })
+
+class Home extends React.Component {
+    constructor(props) {
+        super(props)
+        // 没有super(props), 后面使用回报错
+        // 定义state
+        // bind方法
+        // 其他初始化工作
+    }
+
+    componentWillMount() {
+        // 服务器渲染的唯一hook
+    }
+
+    componentDidMount() {
+        // 可以调用setState， render Component
+    }
+
+    render() {
+        return (
+            <div className="Home">
+                <Switch>
+                    <Route path="/login" component={Login}/>
+                    <Route path="/" component={Main}/>
+                    <Redirect to={"/"}/>
+                </Switch>
+            </div>
+        );
+    }
+}
+
+const Login = () => {
+    return(
+        <div>login</div>
     );
-})
+}
 
 
 export default Home
