@@ -1,7 +1,9 @@
 import React from "react";
-import {Layout, Menu} from 'antd'
+import {Layout, Menu, Button} from 'antd'
 import {Link, Route, Switch, Redirect, withRouter} from "react-router-dom"
 import './index.less'
+import agent from '../../httpSer/agent'
+
 
 const {Header, Content, Sider, Footer} = Layout;
 
@@ -25,6 +27,9 @@ const Demo1 = () => {
     return (
         <div>
             demo1
+            <Button type={"primary"} onClick={() => {
+                agent.Movies.all()
+            }} >Movies</Button>
         </div>
     );
 }

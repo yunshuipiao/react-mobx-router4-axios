@@ -1,4 +1,5 @@
 import axios from 'axios'
+import routerStore from '../mobx/RouterStore'
 
 let instance = axios.create({
     baseURL: "http://www.swensun.com/api/v1/",
@@ -21,6 +22,8 @@ instance.interceptors.request.use( (config) => {
 instance.interceptors.response.use( (response) => {
     // 返回错误判断
     console.log("filter error code")
+    // 判断如果需要登录，routerStore.history.replace("/login")
+    // routerStore.history.replace("/login")
     return response;
 },  (error) => {
     // 可以在后面的请求中catch

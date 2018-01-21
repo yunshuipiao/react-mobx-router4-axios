@@ -1,12 +1,12 @@
 import React from 'react'
 import './index.less'
-import {observer} from 'mobx-react'
+import {observer, inject} from 'mobx-react'
 import Count from './Count/index'
 import ChangeName from './Change/index'
 import Main from './antd-main/index'
 import {Button} from 'antd'
 import agent from '../httpSer/agent'
-import {Switch, Route, Redirect} from 'react-router-dom'
+import {Switch, Route, Redirect, withRouter} from 'react-router-dom'
 
 class Hello extends React.Component {
     constructor(props) {
@@ -96,7 +96,9 @@ const click_button = () => {
 //         </div>
 //     );
 // })
-
+@withRouter
+@inject("routerStore")
+@observer
 class Home extends React.Component {
     constructor(props) {
         super(props)
@@ -104,6 +106,8 @@ class Home extends React.Component {
         // 定义state
         // bind方法
         // 其他初始化工作
+        this.props.routerStore.history = this.props.history
+
     }
 
     componentWillMount() {
