@@ -107,22 +107,6 @@ class Home extends React.Component {
         // bind方法
         // 其他初始化工作
         this.props.routerStore.history = this.props.history
-
-
-        // 第二种方法
-        // // Add a response interceptor
-        // instance.interceptors.response.use( (response) => {
-        //     // 返回错误判断
-        //     console.log("filter error code")
-        //     // 判断如果需要登录，routerStore.history.replace("/login")
-        //     // routerStore.history.replace("/login")
-        //     return response;
-        // },  (error) => {
-        //     // 可以在后面的请求中catch
-        //     console.log("interceptors response error")
-        //     return Promise.reject(error);
-        // });
-
     }
 
     componentWillMount() {
@@ -138,11 +122,44 @@ class Home extends React.Component {
             <div className="Home">
                 <Switch>
                     <Route path="/login" component={Login}/>
+                    <Route path="/gp" component={Group}/>
                     <Route path="/" component={Main}/>
                     <Redirect to={"/"}/>
                 </Switch>
             </div>
         );
+    }
+}
+
+@withRouter
+class Group extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state =  {
+            data: {},
+            groupInfo: {}
+        }
+    }
+
+    componentDidMount() {
+        // 可以调用setState， render Component
+        let params = this.props.match.params
+        console.log(params.id)
+        agent.Group.all("", params.id)
+            .then(res => {
+                console.log(this.props)
+                console.log(res)
+                this.setState({
+                    data:res,
+                    // groupInfo:res.GroupInfo.ginfo
+                })
+            })
+    }
+
+    render () {
+        return (
+            <div>group</div>
+        )
     }
 }
 
